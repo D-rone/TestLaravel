@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+#container {
+    border: solid black 1px;
+    width: 60%;
+    height: 80%;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#navbar {
+    padding: 0 40%;
+}
+
+#content {
+    padding: 100px;
+}
+h1 {
+    margin: 20px;
+}
+#inscriptionForm > div {
+    margin: 30px;
+}
+#hiddenOptions > div > div{
+    display: inline;
+    margin: 30px;
+}
+
+#hiddenOptions label{
+    margin: 0 20px 0 0;
+}
