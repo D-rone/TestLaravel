@@ -37,9 +37,17 @@ class inscription extends Controller
         $inscription->languages = $languagesStr;
         $inscription->save();
 
-        $nb = inscriptions::where('languages', $languagesStr)->where('sexe', $sexe)->get()->count();
+        $separatedLanguages = explode(', ', $languagesStr);
 
-        return view("stats", ['formation' => $formation, 'languages'=>$languagesStr ,  'sexe' => $sexe, 'nb' => $nb]);
+
+
+        $nb = inscriptions::where('sexe', $sexe)->where(function ($query) use ($separatedLanguages) {
+            foreach ($separatedLanguages as $value) {
+                $query->where('languages',"like", "%".$value."%");
+            }
+        })->get()->count();
+
+        return view("stats", ['formation' => $formation, 'languages' => $languagesStr, 'sexe' => $sexe, 'nb' => $nb]);
 
     }
 
